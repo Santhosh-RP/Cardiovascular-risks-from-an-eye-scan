@@ -1,4 +1,4 @@
 Flask
 tensorflow
-opencv
+opencv-python==4.8.0
 gunicorn
