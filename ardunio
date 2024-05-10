@@ -1,0 +1,12 @@
+project_folder/
+│
+├── app.py
+├── diabetic_retinopathy_model.h5
+├── requirements.txt
+├── Procfile
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    └── styles.css
