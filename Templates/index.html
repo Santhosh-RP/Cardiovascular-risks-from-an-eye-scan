@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiovacular risks  Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #selectedImage {
+            max-width: 100%;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #result {
+            margin-top: 30px;
+        }
+
+        #predictionResult {
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1> Cardiovacular Risks Detection</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="imageUpload" class="custom-file-upload">
+            <input type="file" name="image" id="imageUpload" accept="image/*" required onchange="displayImage(this)">
+            Choose Image
+        </label>
+
+        <img id="selectedImage">
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="result" style="display: none;">
+        <h3>Prediction:</h3>
+        <p id="predictionResult"></p>
+    </div>
+</div>
+
+<script>
+    function displayImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var image = document.getElementById('selectedImage');
+                image.src = e.target.result;
+                image.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch('/predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('predictionResult').textContent = data.prediction;
+            document.getElementById('result').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>
