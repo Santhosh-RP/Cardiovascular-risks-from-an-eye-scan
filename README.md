@@ -2,6 +2,10 @@ Project Title: Cardiovascular Risk Prediction from Eye Scans
 Objective
 The primary objective of this project is to develop a deep learning model capable of predicting cardiovascular risk from retinal images. By leveraging non-invasive retinal scans, the model aims to provide an early indication of cardiovascular issues, potentially aiding in timely diagnosis and treatment.
 
+
+![images (1)](https://github.com/user-attachments/assets/ce4d0b09-bb09-4242-8959-6cf4d4feb40a)
+
+
 Background
 Cardiovascular diseases (CVDs) are a leading cause of mortality worldwide. Early detection and management are crucial to reducing the risk and severity of these diseases. Traditional methods for assessing cardiovascular risk often involve invasive procedures and expensive tests. Recent advancements in medical imaging and deep learning have opened new avenues for non-invasive diagnostics. This project explores the potential of using retinal images to predict cardiovascular risk, capitalizing on the interconnected nature of vascular health throughout the body.
 
