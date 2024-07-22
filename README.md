@@ -3,7 +3,7 @@ Objective
 The primary objective of this project is to develop a deep learning model capable of predicting cardiovascular risk from retinal images. By leveraging non-invasive retinal scans, the model aims to provide an early indication of cardiovascular issues, potentially aiding in timely diagnosis and treatment.
 
 
-
+![image](https://github.com/user-attachments/assets/42e830bc-8484-4b29-a149-11223927d8bc)
 
 
 Background
